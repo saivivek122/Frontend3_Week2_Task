@@ -64,10 +64,10 @@ function TakeOrder(menuArray) {
         document.getElementById("placing-order").textContent = "Taking Order......."
 
         setTimeout(() => {
-            // Flatten any nested arrays
+         
             let flatMenu = menuArray.flat(Infinity);
 
-            // Only keep items that have a name and contain "burger"
+           
             let burgerItems = flatMenu
                 .filter(item => item && typeof item.name === "string")
                 .filter(item => item.name.toLowerCase().includes("burger"));
@@ -78,14 +78,14 @@ function TakeOrder(menuArray) {
                 return;
             }
 
-            // Randomly select 3 burger items (if less than 3, take all available)
+         
             let items = [];
             let copyArray = [...burgerItems];
             let count = Math.min(3, copyArray.length);
             for (let i = 0; i < count; i++) {
                 let randomIndex = Math.floor(Math.random() * copyArray.length);
                 items.push(copyArray[randomIndex].name);
-                copyArray.splice(randomIndex, 1); // remove selected item
+                copyArray.splice(randomIndex, 1); 
             }
 
             orderObject = {
