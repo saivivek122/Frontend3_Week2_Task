@@ -58,17 +58,31 @@ function handleMenuButton() {
 
 }
 
-
 function TakeOrder(menuArray) {
     return new Promise((resolve) => {
         console.log("Taking Order.......")
         document.getElementById("placing-order").textContent = "Taking Order......."
 
         setTimeout(() => {
-            // Randomly select 3 items from menuArray
+            // Flatten any nested arrays
+            let flatMenu = menuArray.flat(Infinity);
+
+            // Only keep items that have a name and contain "burger"
+            let burgerItems = flatMenu
+                .filter(item => item && typeof item.name === "string")
+                .filter(item => item.name.toLowerCase().includes("burger"));
+
+            if (burgerItems.length === 0) {
+                alert("No burgers available in the menu!");
+                resolve(null);
+                return;
+            }
+
+            // Randomly select 3 burger items (if less than 3, take all available)
             let items = [];
-            let copyArray = [...menuArray]; // clone to avoid modifying original array
-            for (let i = 0; i < 3 && copyArray.length > 0; i++) {
+            let copyArray = [...burgerItems];
+            let count = Math.min(3, copyArray.length);
+            for (let i = 0; i < count; i++) {
                 let randomIndex = Math.floor(Math.random() * copyArray.length);
                 items.push(copyArray[randomIndex].name);
                 copyArray.splice(randomIndex, 1); // remove selected item
@@ -81,10 +95,14 @@ function TakeOrder(menuArray) {
 
             console.log("Order Placed", orderObject)
             document.getElementById("order-placed").textContent = `Order Placed: ${orderObject.items.join(", ")}`
+
             resolve(orderObject)
         }, 2500)
     })
 }
+
+
+
 
 function orderPrep() {
     return new Promise((resolve) => {
