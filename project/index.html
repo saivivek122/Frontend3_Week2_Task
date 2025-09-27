@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    
+    <h1 id="text">Restaurant Menu</h1>
+    <nav class="navbar">
+        <input id="input" placeholder="enter your dish">
+        <button id="home">Home/order simulation</button>
+        <button id="menu">Show Menu</button>
+        <img id="logo" src="logo.png" />
+    </nav>
+    <div class="container">
+    <div class="left-nav">
+        <div class="image">
+            <img src="logo.png"/>
+            <span>Your Restaurant Menu</span>
+        </div>
+        <div>
+            <h3 id="quick-links">Quick Links</h3>
+            <ol>
+                <li>Home</li>
+                <li>Your orders</li>
+                <li>Wallet</li>
+                <li>Profile</li>
+                <li>Logout</li>
+            </ol>
+            <hr/>
+            <h3 id="more-about-us">More About Us</h3>
+            <ol>
+                <li>Our blog</li>
+                <li>Upcoming Dishes</li>
+                <li>Our story</li>
+                <li>Social Media Links</li>
+            </ol>
+        </div>
+    </div>
+    <div class="home">
+        <div id="display-home">
+            <h1>Welcome you can order here</h1>
+            <div id="messages">
+                <p id="order-message">You can see your order detail below... ,please click start ordering to start</p>
+                <p id="placing-order"></p>
+                <p id="order-placed"></p>
+                <p id="order-preparing"></p>
+                <p id="order-prepared"></p>
+                <p id="payment-processing"></p>
+                <p id="payment-done"></p>
+            </div>
+            <button id="start-order">Start Ordering</button>
+        </div>
+
+        <div id="display-menu">
+            <!-- <h1>Menu</h1> -->
+        </div>
+
+    </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
